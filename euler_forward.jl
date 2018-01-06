@@ -9,7 +9,6 @@ function forward_delta(a::Float64,b::Float64,η::Float64,a0::Float64)
 	y1 = 0.0
 	y0 = a0
 	for i = T
-	    #println("HELLO  $i") 
 	    y1 = y0 + η*f(i,y0)
 	    y0 = y1
 	end 
