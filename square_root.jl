@@ -1,5 +1,5 @@
 #Baysian approx square root finding
-function approx_square_root(x::Int64,ƞ::Int64)
+function approx_square_root(x::Int64,ƞ::Int64) ::Float32
 	x0 = x/2.
 	x_0 = Float32(x0)
 	x_1 = 0.0
@@ -16,5 +16,7 @@ end
 #println("Enter a number and the number of iterations")
 α = 12#read(STDIN, Int64)
 ν = 5#read(STDIN, Int64)
-approx_square_root(α,ν);
+k = 0.0
+k = approx_square_root(α,ν);
+println("$k")
 #approx_square_root(12,1000);

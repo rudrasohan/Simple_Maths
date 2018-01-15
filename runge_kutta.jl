@@ -1,18 +1,24 @@
-#Euler Forward Method Approximation of Integrals of type IVP
+#Runge-Kutta Method Approximation of Integrals of type IVP
 
 function f(x::Float64,y::Float64) ::Float64
 	return (x^2+y)    
 end
 
 function forward_delta(a::Float64,b::Float64,η::Float64,a0::Float64)
+	b = b - η
 	T = collect(a:η:b)
 	y1 = 0.0
 	y0 = a0
 	for i = T
-	    #println("HELLO  $i") 
-	    y1 = y0 + η*f(i,y0)
+	    #println("HELLO  $i")
+	    k1 = η*f(i,y0)
+	    k2 = η*f((i+η/2),(y0+k1/2))
+	    k3 = η*f((i+η/2),(y0+k2/2))
+	    k4 = η*f((i+η),(y0+k3))
+	    y1 = y0 + 1/6.0*(k1+2*k2+2*k3+k4)
 	    y0 = y1
 	end 
+	b = b + η
 	println("Approximate value of y($b) is $y1")
 end
 #usage 
